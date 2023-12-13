@@ -19,7 +19,7 @@
     <a th:href="@{/user/showFormForAdd}" class="btn btn-primary btn-sm mb-3">Add User</a>
     <a th:href="@{/home}" class="btn btn-danger btn-sm mb-3">Logout</a>
     <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+        <thead class="table">
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -34,7 +34,7 @@
             <td th:text="${tmpUser.password}"></td>
             <td>
                 <!-- Add update button/link -->
-                <a th:href="@{/user/showFormForUpdate(userId=${tmpUser.id})}" class="btn btn-info btn-sm">Update</a>
+                <a th:href="@{/user/showFormForUpdate(userId=${tmpUser.id})}" class="btn btn-success btn-sm">Update</a>
                 <!-- Add delete button/link -->
                 <a th:href="@{/user/delete(userId=${tmpUser.id})}" class="btn btn-danger btn-sm"
                    onclick="if(!(confirm('Are you sure you want to delete the user?'))) return false">Delete</a>
