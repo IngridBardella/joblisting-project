@@ -16,7 +16,7 @@
     <p class="h4 md-4">Save Job Listing</p>
 
     <p th:if="${exceptionMessage}" th:errorclass="error" th:errors="${exceptionMessage}"></p>
-    <form th:action="@{/listing/upsert}" th:object="${listing}" method="POST">
+    <form th:action="@{/listings/upsert}" th:object="${listing}" method="POST">
         <input type="text" th:field="*{id}" class="form-control mb-4 w-25" hidden placeholder="id">
 
         <input type="text" th:field="*{jobTitle}" class="form-control mb-4 w-25" placeholder="Job Title" required="true">
@@ -28,17 +28,17 @@
         <input type="number" th:field="*{salary}" class="form-control mb-4 w-25" placeholder="Salary" required="true">
         <p th:if="${#fields.hasErrors('salary')}" th:errorclass="error" th:errors="*{salary}"></p>
 
-        <select th:field="*{category}" class="form-select mb-4 w-25" required="true">
+        <select th:field="*{categoryId}" class="form-select mb-4 w-25" required="true">
             <option value="" disabled selected>Select a Category</option>
             <!-- Add options dynamically based on available categories -->
-            <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat.name}"></option>
+            <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
         </select>
 
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
 
     <hr>
-    <a th:href="@{/listing/list}">Back to Job Listings</a>
+    <a th:href="@{/listings/}">Back to Job Listings</a>
 </div>
 </body>
 </html>

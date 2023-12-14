@@ -30,12 +30,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
+                                .requestMatchers("/listings/**").hasRole("ADMIN")
                                 .requestMatchers("/management").hasRole("ADMIN")
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/management")
+                                .loginProcessingUrl("/login/submit")
+                                .defaultSuccessUrl("/listings/")
                                 .permitAll()
                 ).logout(
                         logout -> logout

@@ -2,6 +2,7 @@ package com.example.project.mapper;
 
 import com.example.project.dto.ListingDTO;
 import com.example.project.entity.Listing;
+import com.example.project.repository.CategoryRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class ListingMapperHelper {
     private final ObjectMapper mapper;
 
     @Autowired
-    public ListingMapperHelper(ObjectMapper mapper) {
+    public ListingMapperHelper(CategoryRepository categoryRepository, ObjectMapper mapper) {
         this.mapper = mapper;
     }
 
@@ -26,6 +27,7 @@ public class ListingMapperHelper {
         }
         return listingDTOs;
     }
+
 
     public ListingDTO convertListingToListingDTO (Listing listing) {
         return mapper.convertValue(listing, ListingDTO.class);

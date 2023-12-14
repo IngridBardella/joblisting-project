@@ -3,6 +3,7 @@ package com.example.project.dto;
 import com.example.project.entity.Category;
 import com.example.project.entity.User;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -17,19 +18,15 @@ import lombok.Setter;
 public class ListingDTO {
     private Long id;
 
-    @NotBlank
+    @NotEmpty(message = "Title cannot be empty.")
     private String jobTitle;
 
-    @NotBlank
+    @NotEmpty(message = "Job description cannot be empty.")
     private String jobDescription;
 
-    @NotNull
+    @NotNull(message = "Salary cannot be null.")
     @Positive
     private Double salary;
 
-    @NotNull
-    private Category category;
-
-    @NotNull
-    private User user;
+    private Long categoryId;
 }
