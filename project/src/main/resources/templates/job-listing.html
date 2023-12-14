@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Job Listings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h3>Job List</h3>
+    <hr>
+
+    <!-- Add a button-->
+    <a th:href="@{/listing/showFormForAdd}" class="btn btn-primary btn-sm mb-3">Add Job</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table">
+        <tr>
+            <th>Job Title</th>
+            <th>Job Description</th>
+            <th>Salary</th>
+            <th>Category</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listing : ${listings}">
+            <td th:text="${listing.jobTitle}"></td>
+            <td th:text="${listing.jobDescription}"></td>
+            <td th:text="${listing.salary}"></td>
+            <td th:text="${listing.category.name}"></td>
+            <td>
+                <!-- Add update button/link -->
+                <a th:href="@{/listing/showFormForUpdate(id=${listing.id})}" class="btn btn-success btn-sm">Update</a>
+                <!-- Add delete button/link -->
+                <a th:href="@{/listing/delete(id=${listing.id})}" class="btn btn-danger btn-sm"
+                   onclick="if(!(confirm('Are you sure you want to delete this job from the list?'))) return false">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>
