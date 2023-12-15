@@ -1,6 +1,5 @@
 package com.example.project.controller;
 
-import com.example.project.dto.CategoryDTO;
 import com.example.project.dto.ListingDTO;
 import com.example.project.entity.Category;
 import com.example.project.entity.Listing;
