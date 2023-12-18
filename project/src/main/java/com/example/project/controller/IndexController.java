@@ -61,9 +61,22 @@ public class IndexController {
         return "redirect:/register?success";
     }
 
+
+
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @PostMapping("/login/submit")
+    public String loginSubmit(@RequestParam("user") String username,
+                              @RequestParam("password") String password,
+                              Model model) {
+        // Your authentication logic here
+
+        // If authentication is successful, you might redirect to another page
+        // For example, assuming you have a "/dashboard" endpoint
+        return "redirect:/listings";
     }
 
     @GetMapping("/listings/")
@@ -77,7 +90,7 @@ public class IndexController {
         ListingDTO listing = new ListingDTO();
         List<Category> categories = listingService.getAllCategories();
         model.addAttribute("listing", listing);
-        model.addAttribute("categories", categories);
+        /*model.addAttribute("categories", categories);**/
         return "listing-form";
     }
 
@@ -85,8 +98,8 @@ public class IndexController {
     public String upsertListing(@Valid @ModelAttribute("listing") ListingDTO listingDTO,
                                 BindingResult result, Model model) {
         if(result.hasErrors()){
-            List<Category> categories = listingService.getAllCategories();
-            model.addAttribute("categories", categories);
+            /*List<Category> categories = listingService.getAllCategories();
+            model.addAttribute("categories", categories);**/
             return "listing-form";
         }
         listingService.saveListing(listingDTO);

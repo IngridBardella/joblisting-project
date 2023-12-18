@@ -30,7 +30,10 @@ public class Listing {
     @Column(name="salary")
     private Double salary;
 
+    /*
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="category", referencedColumnName = "id")
     private Category category;
+
+    */
 }

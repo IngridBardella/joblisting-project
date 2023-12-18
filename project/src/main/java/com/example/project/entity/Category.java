@@ -22,7 +22,9 @@ public class Category {
     @NotBlank
     @Column(name="name")
     private String name;
-
+    /*
     @OneToMany
     private List<Listing> listings;
+
+     */
 }

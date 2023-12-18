@@ -38,8 +38,8 @@ public class ListingServiceImpl implements ListingService {
     @Override
     public void saveListing(ListingDTO listingDTO) {
         Listing listing = mapperHelper.convertListingDTOToListing(listingDTO);
-        Category category = getCategoryById(listingDTO.getCategoryId());
-        listing.setCategory(category);
+        /*Category category = getCategoryById(listingDTO.getCategoryId());
+        listing.setCategory(category);*/
         listingRepository.save(listing);
     }
 
@@ -49,7 +49,7 @@ public class ListingServiceImpl implements ListingService {
         if(byId.isPresent()) {
             Listing listing = byId.get();
             ListingDTO listingDTO = mapperHelper.convertListingToListingDTO(listing);
-            listingDTO.setCategoryId(listing.getCategory().getId());
+            /*listingDTO.setCategoryId(listing.getCategory().getId());*/
             return listingDTO;
         }
         throw new RuntimeException("Unable to find listing.");
